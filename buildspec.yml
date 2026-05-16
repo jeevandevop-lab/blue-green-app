@@ -22,7 +22,7 @@ phases:
       - docker push $IMAGE_URI
 
       - echo "Fetching current task definition..."
-      - TASK_DEF=$(aws ecs describe-task-definition --task-definition blue-green-task --query taskDefinition)
+      - TASK_DEF=$(aws ecs describe-task-definition --task-definition blue-green-task-kln --query taskDefinition)
 
       - echo "Registering new task definition with updated image..."
       - NEW_TASK_DEF=$(echo $TASK_DEF | jq --arg IMAGE "$IMAGE_URI" '
